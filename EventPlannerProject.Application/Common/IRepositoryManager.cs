@@ -8,5 +8,6 @@ namespace EventPlannerProject.Application.Common
 {
     public interface IRepositoryManager
     {
+
     }
 }

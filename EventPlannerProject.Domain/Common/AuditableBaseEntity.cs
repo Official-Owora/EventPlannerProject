@@ -11,7 +11,7 @@ namespace EventPlannerProject.Domain.Common
     {
         [Key]
         public int Id { get; set; }
-        public string? StaffId { get; set; }
+        //public string? StaffId { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime? DateCreated { get; set; } = DateTime.Now;
         public string? LastModifiedBy { get; set; }
