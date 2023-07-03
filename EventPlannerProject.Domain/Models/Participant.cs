@@ -25,7 +25,7 @@ namespace EventPlannerProject.Domain.Models
         [MaxLength(30, ErrorMessage = "Maximum length for last name is 30 characters")]
         public string? ParticipantLastName { get; set; }
 
-        [Required(ErrorMessage = "Participant email address is required")]
+        [Required(ErrorMessage = "Participant email address is required"), DataType(DataType.EmailAddress)]
         public string? ParticipantEmailAddress { get; set; }
 
         [Required(ErrorMessage = "Phone Number of the Assignee is required"), DataType(DataType.PhoneNumber)]
