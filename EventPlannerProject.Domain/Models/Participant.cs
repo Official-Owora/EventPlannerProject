@@ -15,7 +15,21 @@ namespace EventPlannerProject.Domain.Models
         public int EventId { get; set; }
 
         [ForeignKey(nameof(Organizer))]
-        public int ClientId { get; set; }
+        public int OrganizerId { get; set; }
+
+        [Required(ErrorMessage = "Participant first name is required")]
+        [MaxLength(30, ErrorMessage = "Maximum length for first name is 30 characters")]
+        public string? ParticipantFirstName { get; set; }
+
+        [Required(ErrorMessage = "Participant last name is required")]
+        [MaxLength(30, ErrorMessage = "Maximum length for last name is 30 characters")]
+        public string? ParticipantLastName { get; set; }
+
+        [Required(ErrorMessage = "Participant email address is required")]
+        public string? ParticipantEmailAddress { get; set; }
+
+        [Required(ErrorMessage = "Phone Number of the Assignee is required"), DataType(DataType.PhoneNumber)]
+        public string? ParticipantPhoneNumber { get; set; }
 
         [Required(ErrorMessage = "RSVP Status is required")]
         public string? RSVPStatus { get; set; }

@@ -19,7 +19,7 @@ namespace EventPlannerProject.Domain.Models
         public DateTime? EventStartDate { get; set; }
 
         [Required(ErrorMessage ="Time of the event is required")]
-        public DateTime EventStartTime { get; set; }
+        public string? EventStartTime { get; set; }
 
         [Required(ErrorMessage = "Venue of the event is required")]
         public string? EventVenue { get; set; }
@@ -29,7 +29,7 @@ namespace EventPlannerProject.Domain.Models
         public string? EventAddress { get; set; }
 
         [Required(ErrorMessage ="The state event will happen is required"), DataType(DataType.Text)]
-        [MaxLength(20, ErrorMessage ="Maximum length for this state is 20 characters")]
+        [MaxLength(20, ErrorMessage ="Maximum length for the state is 20 characters")]
         public string? EventLocationByState { get; set; }
 
         //Has One to Many mapping with Assignment table
@@ -37,5 +37,8 @@ namespace EventPlannerProject.Domain.Models
 
         //Has One to Many mapping with Participant table
         List<IEnumerable<Participant>>? Participants { get; set; }
+
+        //Has One to Many mapping with Notification
+        List<IEnumerable<Notification>>? Notifications { get; set; }
     }
 }

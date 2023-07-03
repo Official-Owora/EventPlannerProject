@@ -11,5 +11,8 @@ namespace EventPlannerProject.Application.Common
     {
         public INotificationRepository NotificationRepository { get; set; }
         public IOrganizerRepository OrganizerRepository { get; set; }
+        public IEventsRepository EventsRepository { get; set; }
+        public IParticipantRepository ParticipantRepository { get; set; }
+        public IAssignmentRepository AssignmentRepository { get; set; }
     }
 }

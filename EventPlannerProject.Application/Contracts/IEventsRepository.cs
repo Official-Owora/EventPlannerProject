@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventPlannerProject.Application.Contracts
 {
-    public interface IEventRepository
+    public interface IEventsRepository
     {
         Task<IEnumerable<Events>> FindAllEventsAsync(bool trackChanges);
         Task<Events?> FindEventsByIdAsync(int Id, bool trackChanges);
