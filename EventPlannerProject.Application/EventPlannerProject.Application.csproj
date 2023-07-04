@@ -10,4 +10,10 @@
     <ProjectReference Include="..\EventPlannerProject.Domain\EventPlannerProject.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\ForCreationDto\" />
+    <Folder Include="DTOs\ForDisplayDto\" />
+    <Folder Include="DTOs\ForUpdateDto\" />
+  </ItemGroup>
+
 </Project>
