@@ -9,7 +9,7 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface IAssignmentRepository
     {
-        Task<IEnumerable<Assignment>> FindAllAssignmentAsync(bool trackChanges);
+        Task<IEnumerable<Assignment>> FindAllAssignmentsAsync(bool trackChanges);
         Task<Assignment?> FindAssignmentByAssigneePhoneNumber(string AssigneePhoneNumber, bool trackChanges);
         void CreateAssignment(Assignment assignment);
         void DeleteAssignment(Assignment assignment);

@@ -9,7 +9,7 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface IEventsRepository
     {
-        Task<IEnumerable<Events>> FindAllEventsAsync(bool trackChanges);
+        Task<IEnumerable<Events>> FindAllEventssAsync(bool trackChanges);
         Task<Events?> FindEventsByIdAsync(int Id, bool trackChanges);
         void CreateEvent(Events events);
         void DeleteEvent(Events events);
