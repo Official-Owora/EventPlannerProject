@@ -23,17 +23,17 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void DeleteEvents(Events events)
         {
-            DeleteEvents(events);
+            Delete(events);
         }
 
-        public async Task<IEnumerable<Events>> GetAllEventsAsync(bool trackChanges)
+        public async Task<IEnumerable<Events>> FindAllEventsAsync(bool trackChanges)
         {
             return await FindAllAsync(trackChanges)
                 .OrderBy(x => x.Id)
                 .ToListAsync();
         }
 
-        public async Task<Events?> GetEventsByIdAsync(int Id, bool trackChanges)
+        public async Task<Events?> FindEventsByIdAsync(int Id, bool trackChanges)
         {
             var events = await FindByConditionAsync(x => x.Id == Id, trackChanges).ToListAsync();
             return events.FirstOrDefault();
