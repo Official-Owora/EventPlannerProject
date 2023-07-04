@@ -34,12 +34,13 @@ namespace EventPlannerProject.Domain.Models
 
         //Navigational properties
         //Has One to Many mapping with Assignment table
-        public ICollection<Assignment>? Assignment { get; set; }
+        List<IEnumerable<Assignment>>? Assignments { get; set; }
 
         //Has One to Many mapping with Participant table
-        public ICollection<Participant>? Participant { get; set; }
+        List<IEnumerable<Participant>>? Participants { get; set; }
+       
+        //Has one to many mapping with Notification Table
+        List<IEnumerable<Notification>>? Notifications { get; set; }
 
-        //Has One to Many mapping with Notification
-        public ICollection<Notification>? Notification { get; set; }
     }
 }

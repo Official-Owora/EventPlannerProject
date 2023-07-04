@@ -30,6 +30,6 @@ namespace EventPlannerProject.Domain.Models
         public string? Role { get; set; }
 
         //Navigational properties
-        public ICollection<Participant>? Participant { get; set; }
+        List<IEnumerable<Participant>>? Participants { get; set; }
     }
 }

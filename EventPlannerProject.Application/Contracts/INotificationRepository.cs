@@ -9,7 +9,7 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface INotificationRepository
     {
-        Task<IEnumerable<Notification>> FindAllNotificationAsync(bool trackChanges);
+        Task<IEnumerable<Notification>> FindAllNotificationsAsync(bool trackChanges);
         Task<Notification> FindNotificationById(int Id, bool trackChanges);
         void CreateNotification(Notification notification);
         void DeleteNotification(Notification notification);

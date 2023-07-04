@@ -9,7 +9,7 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface IParticipantRepository
     {
-        Task<IEnumerable<Participant>> FindAllParticipantAsync(bool trackChanges);
+        Task<IEnumerable<Participant>> FindAllParticipantsAsync(bool trackChanges);
         Task<Participant>FindParticipantsByParticipantPhoneNumber(string phoneNumber, bool trackChanges);
         void CreateParticipant(Participant participant);
         void DeleteParticipant(Participant participant);

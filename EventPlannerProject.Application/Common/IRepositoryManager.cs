@@ -9,10 +9,11 @@ namespace EventPlannerProject.Application.Common
 {
     public interface IRepositoryManager
     {
-        public INotificationRepository NotificationRepository { get; set; }
-        public IOrganizerRepository OrganizerRepository { get; set; }
-        public IEventsRepository EventsRepository { get; set; }
-        public IParticipantRepository ParticipantRepository { get; set; }
-        public IAssignmentRepository AssignmentRepository { get; set; }
+        public INotificationRepository NotificationRepository { get; }
+        public IOrganizerRepository OrganizerRepository { get; }
+        public IEventsRepository EventsRepository { get; }
+        public IParticipantRepository ParticipantRepository { get; }
+        public IAssignmentRepository AssignmentRepository { get; }
+        Task SaveAsync();
     }
 }

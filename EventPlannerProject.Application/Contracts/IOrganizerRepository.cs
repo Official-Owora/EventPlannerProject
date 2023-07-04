@@ -9,7 +9,7 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface IOrganizerRepository
     {
-        Task<IEnumerable<Organizer>> FindAllOrganizerAsync(bool trackChanges);
+        Task<IEnumerable<Organizer>> FindAllOrganizersAsync(bool trackChanges);
         Task<Organizer> FindOrganizerById(int id, bool trackChanges);
         void CreateOrganizer(Organizer organizer);
         void UpdateOrganizer(Organizer organizer);
