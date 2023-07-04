@@ -15,4 +15,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventPlannerProject.Domain\EventPlannerProject.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
