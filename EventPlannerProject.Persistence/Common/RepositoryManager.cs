@@ -15,6 +15,8 @@ namespace EventPlannerProject.Persistence.Common
         private readonly Lazy<IEventsRepository> _eventsRepository;
         private readonly Lazy<IParticipantRepository> _participantRepository;
         private readonly Lazy<IAssignmentRepository> _assignmentRepository;
+        private readonly Lazy<IOrganizerRepository> _organizerRepository;
+        private readonly Lazy<INotificationRepository> _notificationRepository;
         
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -22,11 +24,13 @@ namespace EventPlannerProject.Persistence.Common
             _eventsRepository = new Lazy<IEventsRepository>(() => new EventsRepository(repositoryContext));
             _participantRepository = new Lazy<IParticipantRepository>(() => new ParticipantRepository(repositoryContext));
             _assignmentRepository = new Lazy<IAssignmentRepository>(() => new AssignmentRepository(repositoryContext));
+            _organizerRepository = new Lazy<IOrganizerRepository> (()=> new OrganizerRepository(repositoryContext));
+            _notificationRepository = new Lazy<INotificationRepository> (()=> new NotificationRepository(repositoryContext));
         }
 
-        public INotificationRepository NotificationRepository => throw new NotImplementedException();
+        public INotificationRepository NotificationRepository => _notificationRepository.Value;
 
-        public IOrganizerRepository OrganizerRepository => throw new NotImplementedException();
+        public IOrganizerRepository OrganizerRepository => _organizerRepository.Value;
 
         public IEventsRepository EventsRepository => _eventsRepository.Value;
 
