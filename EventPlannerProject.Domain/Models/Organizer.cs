@@ -32,8 +32,6 @@ namespace EventPlannerProject.Domain.Models
         [Required(ErrorMessage = "Role is compulsory")]
         public string? Role { get; set; }
 
-        //Relationship between Organizer and Participant entities
         List<IEnumerable<Participant>>? Participants { get; set; }
-        List<IEnumerable<Events>>? Events { get; set; }
     }
 }
