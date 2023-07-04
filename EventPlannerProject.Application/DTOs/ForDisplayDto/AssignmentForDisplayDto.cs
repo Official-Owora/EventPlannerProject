@@ -8,7 +8,6 @@ namespace EventPlannerProject.Application.DTOs.ForDisplayDto
 {
     public class AssignmentForDisplayDto
     {
-        public int Id { get; set; }
         public string? TaskTitle { get; set; }
         public string? TaskDescription { get; set; }
         public string? AssigneeFirstName { get; set; }

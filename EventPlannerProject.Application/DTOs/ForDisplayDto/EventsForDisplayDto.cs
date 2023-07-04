@@ -8,7 +8,6 @@ namespace EventPlannerProject.Application.DTOs.ForDisplayDto
 {
     public class EventsForDisplayDto
     {
-        public int Id { get; set; }
         public string? EventDescription { get; set; }
         public DateTime? EventStartDate { get; set; }
         public string? EventStartTime { get; set;}
