@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventPlannerProject.Persistence.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230704123533_EventPlannerProject_DB")]
+    [Migration("20230704123342_EventPlannerProject_DB")]
     partial class EventPlannerProject_DB
     {
         /// <inheritdoc />
@@ -134,7 +134,7 @@ namespace EventPlannerProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Eventss");
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("EventPlannerProject.Domain.Models.Notification", b =>

@@ -36,7 +36,7 @@ namespace EventPlannerProject.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Eventss",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -54,7 +54,7 @@ namespace EventPlannerProject.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eventss", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,7 +140,7 @@ namespace EventPlannerProject.Persistence.Migrations
                 name: "Assignments");
 
             migrationBuilder.DropTable(
-                name: "Eventss");
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "Notifications");
