@@ -14,7 +14,7 @@ namespace EventPlannerProject.WebAPI.ContextFactory
                 .Build();
             var builder = new DbContextOptionsBuilder<RepositoryContext>()
                 .UseSqlServer(configuration.GetConnectionString("sqlConnection"),
-                b => b.MigrationsAssembly("EventPlannerPrject.Persistence"));
+                b => b.MigrationsAssembly("EventPlannerProject.Persistence"));
 
             return new RepositoryContext(builder.Options);
                 

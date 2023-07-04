@@ -25,6 +25,6 @@ namespace EventPlannerProject.Persistence.Common
         public DbSet<Organizer> Organizers { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<Events> Events { get; set; }
+        public DbSet<Events> Eventss { get; set; }
     }
 }
