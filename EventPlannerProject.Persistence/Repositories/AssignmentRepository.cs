@@ -14,6 +14,7 @@ namespace EventPlannerProject.Persistence.Repositories
     {
         public AssignmentRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
+
         }
 
         public void CreateAssignment(Assignment assignment)
