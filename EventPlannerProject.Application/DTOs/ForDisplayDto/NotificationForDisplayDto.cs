@@ -13,7 +13,7 @@ namespace EventPlannerProject.Application.DTOs.ForDisplayDto
         public int RecipientId { get; set; }
 
         public string? Message { get; set; }
-]
+
         public DateTime SentDate { get; set; }
     }
 }
