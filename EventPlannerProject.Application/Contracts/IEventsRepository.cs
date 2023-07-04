@@ -9,9 +9,10 @@ namespace EventPlannerProject.Application.Contracts
 {
     public interface IEventsRepository
     {
-        Task<IEnumerable<Events>> FindAllEventssAsync(bool trackChanges);
-        Task<Events?> FindEventsByIdAsync(int Id, bool trackChanges);
-        void CreateEvent(Events events);
-        void DeleteEvent(Events events);
+        Task<IEnumerable<Events>> GetAllEventsAsync(bool trackChanges);
+        Task<Events?> GetEventsByIdAsync(int Id, bool trackChanges);
+        void CreateEvents(Events events);
+        void DeleteEvents(Events events);
+        void UpdateEvents(Events events);
     }
 }

@@ -131,7 +131,6 @@ namespace EventPlannerProject.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Eventss");
                 });
 
             modelBuilder.Entity("EventPlannerProject.Domain.Models.Notification", b =>
