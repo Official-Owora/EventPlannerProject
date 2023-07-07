@@ -34,9 +34,9 @@ namespace EventPlannerProject.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Assignment?> FindAssignmentByAssigneePhoneNumber(string AssigneePhoneNumber, bool trackChanges)
+        public async Task<Assignment?> FindAssignmentByIdAsync(int Id, bool trackChanges)
         {
-            var assignment = await FindByConditionAsync(x => x.AssigneePhoneNumber == AssigneePhoneNumber, trackChanges).ToListAsync();
+            var assignment = await FindByConditionAsync(x => x.Id == Id, trackChanges).ToListAsync();
             return assignment.FirstOrDefault();
         }
 

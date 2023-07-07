@@ -12,7 +12,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     public interface IAssignmentService
     {
         Task<IEnumerable<AssignmentForDisplayDto>> FindAllAssignmentsAsync(bool trackChanges);
-        Task<AssignmentForDisplayDto> FindAssignmentByAssigneePhoneNumberAsync(string AssigneePhoneNumber, bool trackChanges);
+        Task<AssignmentForDisplayDto> FindAssignmentByIdAsync(int Id, bool trackChanges);
         Task<AssignmentForDisplayDto> CreateAssignementAsync(AssignmentForCreationDto assignmentForCreationDto);
         Task UpdateAssignmentAsync(int Id, AssignmentForUpdateDto assignmentForUpdateDto, bool trackChanges);
         Task DeleteAssignmentAsync(int Id, bool trackChanges);

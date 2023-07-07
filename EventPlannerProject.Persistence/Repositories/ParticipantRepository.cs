@@ -33,10 +33,11 @@ namespace EventPlannerProject.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Participant> FindByParticipantPhoneNumber(string ParticipantPhoneNumber, bool trackChanges)
+        public async Task<Participant> FindParticipantsByIdAsync(int Id, bool trackChanges)
         {
-            var participant = await FindByConditionAsync(x => x.ParticipantPhoneNumber == ParticipantPhoneNumber, trackChanges).ToListAsync();
+            var participant = await FindByConditionAsync(x => x.Id == Id, trackChanges).ToListAsync();
             return participant.FirstOrDefault();
+
         }
 
         public void UpdateParticipant(Participant participant)
