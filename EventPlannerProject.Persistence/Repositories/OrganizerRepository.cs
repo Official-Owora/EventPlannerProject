@@ -44,7 +44,7 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void UpdateOrganizer(Organizer organizer)
         {
-            throw new NotImplementedException();
+            Update(organizer);
         }
     }
 }
