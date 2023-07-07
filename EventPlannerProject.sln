@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPlannerProject.WebAPI"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{50BE08E9-111F-4301-B506-F692CEB0DC61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPlannerProject.ServiceContract", "EventPlannerProject.ServiceContract\EventPlannerProject.ServiceContract.csproj", "{AD08EF6E-7744-4D6C-862A-76693238AB98}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,10 +49,6 @@ Global
 		{50BE08E9-111F-4301-B506-F692CEB0DC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BE08E9-111F-4301-B506-F692CEB0DC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BE08E9-111F-4301-B506-F692CEB0DC61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD08EF6E-7744-4D6C-862A-76693238AB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD08EF6E-7744-4D6C-862A-76693238AB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD08EF6E-7744-4D6C-862A-76693238AB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD08EF6E-7744-4D6C-862A-76693238AB98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,7 +63,6 @@ Global
 		{D01318A4-76FB-4A52-A2D6-ED640F844993} = {0580E55F-BF32-43AB-A0F4-E46E0E85476A}
 		{54EBBD02-5DE9-451F-B9BD-17EFB4ED722E} = {1028514F-9C7E-4660-9EF8-D7E561688599}
 		{50BE08E9-111F-4301-B506-F692CEB0DC61} = {F5FF7713-516D-4A92-A1E3-C5691FA283F2}
-		{AD08EF6E-7744-4D6C-862A-76693238AB98} = {0580E55F-BF32-43AB-A0F4-E46E0E85476A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54BA5F54-D888-4BFD-BD4E-FD9C5D7C1147}
