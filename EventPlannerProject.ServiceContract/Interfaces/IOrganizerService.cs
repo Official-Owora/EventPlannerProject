@@ -13,8 +13,8 @@ namespace EventPlannerProject.ServiceContract.Interfaces
         Task<IEnumerable<OrganizerForDisplayDto>> FindAllOrganizerAsync(bool trackChanges);
         Task<OrganizerForDisplayDto> FindOrganizerByPhoneNumberAsync(string phoneNumber);
         Task<OrganizerForDisplayDto> CreateOrganizerAsync(OrganizerForUpdateDto organizer);
-        Task UpdateNotificationAsync(int id, OrganizerForDisplayDto organizer, bool trackChanges);
-        Task DeleteNotificationAsync(int id);
+        Task UpdateOrganizerAsync(int id, OrganizerForDisplayDto organizer, bool trackChanges);
+        Task DeleteOrganizerAsync(int id);
 
     }
 }

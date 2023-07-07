@@ -11,5 +11,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
         IAssignmentService AssignmentService { get; }
         IEventsService EventsService { get; }
         IParticipantService ParticipantService { get; }
+        INotificationService NotificationService { get; }
+        IOrganizerService OrganizerService { get; }
     }
 }
