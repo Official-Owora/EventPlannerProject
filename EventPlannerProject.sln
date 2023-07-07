@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPlannerProject.Persist
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPlannerProject.WebAPI", "EventPlannerProject.WebAPI\EventPlannerProject.WebAPI.csproj", "{54EBBD02-5DE9-451F-B9BD-17EFB4ED722E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPlannerProject.ServiceContract", "EventPlannerProject.ServiceContract\EventPlannerProject.ServiceContract.csproj", "{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{D01318A4-76FB-4A52-A2D6-ED640F844993} = {0580E55F-BF32-43AB-A0F4-E46E0E85476A}
 		{54EBBD02-5DE9-451F-B9BD-17EFB4ED722E} = {1028514F-9C7E-4660-9EF8-D7E561688599}
 		{7EBC95B5-1E15-4C6B-BFF5-4BB01AC38935} = {F5FF7713-516D-4A92-A1E3-C5691FA283F2}
+		{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695} = {0580E55F-BF32-43AB-A0F4-E46E0E85476A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54BA5F54-D888-4BFD-BD4E-FD9C5D7C1147}
