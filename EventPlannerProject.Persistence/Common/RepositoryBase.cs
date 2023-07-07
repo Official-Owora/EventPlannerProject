@@ -37,7 +37,7 @@ namespace EventPlannerProject.Persistence.Common
 
         public IQueryable<T> FindByConditionAsync(Expression<Func<T, bool>> expression, bool trackChanges)
         {
-            return ! trackChanges ?
+            return !trackChanges ?
                 RepositoryContext.Set<T>()
                 .Where(expression)
                 .AsNoTracking():
