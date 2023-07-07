@@ -1,4 +1,6 @@
-﻿using EventPlannerProject.Application.DTOs.ForDisplayDto;
+﻿using EventPlannerProject.Application.DTOs.ForCreationDto;
+using EventPlannerProject.Application.DTOs.ForDisplayDto;
+using EventPlannerProject.Application.DTOs.ForUpdateDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,8 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     {
         Task<IEnumerable<AssignmentForDisplayDto>> FindAllAssignmentsAsync(bool trackChanges);
         Task<AssignmentForDisplayDto> FindAssignmentByAssigneePhoneNumberAsync(string AssigneePhoneNumber, bool trackChanges);
-        Task<AssignmentForDisplayDto> CreateAssignementAsync(AssignmentForDisplayDto assignmentForDisplayDto);
-        Task UpdateAssignmentAsync(int Id, AssignmentForDisplayDto assignmentForDisplayDto, bool trackChanges);
+        Task<AssignmentForCreationDto> CreateAssignementAsync(AssignmentForCreationDto assignmentForCreationDto);
+        Task UpdateAssignmentAsync(int Id, AssignmentForUpdateDto assignmentForUpdateDto, bool trackChanges);
         Task DeleteAssignmentAsync(int Id, bool trackChanges);
     }
 }
