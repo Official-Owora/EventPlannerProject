@@ -13,7 +13,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     {
         Task<IEnumerable<ParticipantForDisplayDto>> FindAllParticipantAsync(bool trackChanges);
         Task<ParticipantForDisplayDto> FindParticipantsByPhoneNumberAsync(string ParticipantPhoneNumber, bool trackChanges);
-        Task<ParticipantForCreationDto> CreateParticipantAsync(ParticipantForCreationDto participantForCreationDto, bool trackChanges);
+        Task<ParticipantForDisplayDto> CreateParticipantAsync(ParticipantForCreationDto participantForCreationDto, bool trackChanges);
         Task UpdateParticipantAsync(int Id,ParticipantForUpdateDto participantForUpdateDto, bool trackChanges);
         Task DeleteParticipantAsync(int Id, bool trackChanges);
     }
