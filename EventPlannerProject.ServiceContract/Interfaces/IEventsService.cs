@@ -14,7 +14,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     {
         Task<IEnumerable<EventsForDisplayDto>> FindAllEventsAsync(bool trackChanges);
         Task<EventsForDisplayDto> FindEventsByIdAsync(int Id, bool trackChanges);
-        Task<EventsForCreationDto> CreateEventsAsync(EventsForCreationDto eventsForCreationDto);
+        Task<EventsForDisplayDto> CreateEventsAsync(EventsForCreationDto eventsForCreationDto);
         Task UpdateEventsAsync(int Id, EventsForUpdateDto eventsForUpdateDto, bool trackChanges);
         Task DeleteEventsAsync(int Id, bool trackChanges);
     }
