@@ -1,6 +1,7 @@
 ﻿using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
         Task<IEnumerable<NotificationForDisplayDto>> FindAllNotificationAsync(bool trackChanges);
         Task<NotificationForDisplayDto> FindNotificationByRecipientId(int  recipientId, bool trackChanges);
         Task<NotificationForDisplayDto> CreateNotificationAsync(NotificationForCreationDto notificationForCreationDto);
-        Task UpdateNotificationAsync(int id,  NotificationForUpdateDto notificationForUpdateDto, bool trackChanges);
-        Task DeleteNotificationAsync(int id);
+        Task UpdateNotificationAsync(int id, bool trackChanges);
+        Task DeleteNotificationAsync(int id, bool trackChanges);
     }
 }
