@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventPlannerProject.ServiceRepository.Service
 {
-    internal sealed class NotificationService 
+    internal sealed class NotificationService : 
     {
 
     }
