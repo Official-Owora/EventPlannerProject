@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventPlannerProject.Application.DTOs.ForCreationDto
+namespace EventPlannerProject.Application.DTOs.ForUpdateDto
 {
     public class NotificationForUpdateDto
     {
