@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventPlannerProject.Application.DTOs.ForCreationDto
 {
-    public class OrganizerForUpdateDto
+    public class OrganizerForCreationDto
     {
         [Required(ErrorMessage = "First name is required")]
         [MaxLength(15, ErrorMessage = "Maximum length for First Name is 15 characters")]

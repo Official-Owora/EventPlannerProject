@@ -1,5 +1,6 @@
 ﻿using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
+using EventPlannerProject.Application.DTOs.ForUpdateDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     {
         Task<IEnumerable<OrganizerForDisplayDto>> FindAllOrganizerAsync(bool trackChanges);
         Task<OrganizerForDisplayDto> FindOrganizerByPhoneNumberAsync(string phoneNumber);
-        Task<OrganizerForDisplayDto> CreateOrganizerAsync(OrganizerForUpdateDto organizer);
-        Task UpdateOrganizerAsync(int id, OrganizerForDisplayDto organizer, bool trackChanges);
+        Task<OrganizerForDisplayDto> CreateOrganizerAsync(OrganizerForCreationDto organizerForCreationDto);
+        Task UpdateOrganizerAsync(int id, OrganizerForUpdateDto organizerForUpdateDto, bool trackChanges);
         Task DeleteOrganizerAsync(int id);
 
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventPlannerProject.Application.DTOs.ForCreationDto
 {
-    public class NotificationForUpdateDto
+    public class NotificationForCreationDto
     {
         [Required(ErrorMessage = "Recipient ID is required")]
         [MaxLength(5, ErrorMessage = "Maximum number for id is five digits")]
