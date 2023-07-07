@@ -56,7 +56,7 @@ namespace EventPlannerProject.ServiceRepository.Service
 
         public async Task<OrganizerForDisplayDto> FindOrganizerByIdAsync(int id, bool trackChanges)
         {
-            var Organizer = _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
+            var Organizer = await _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
             if(Organizer == null)
             {
                 //throw an exception

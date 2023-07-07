@@ -17,17 +17,20 @@ namespace EventPlannerProject.ServiceRepository.Service
         private readonly Lazy<IOrganizerService> _organizerService;
         private readonly Lazy<IParticipantService> _participantService;
 
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper)
+        public ServiceManager(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
-            _notificationService = new Lazy<INotificationService>(() => new NotificationService(repositoryManager, loggerManager, mapper));
-            _organizerService = new Lazy<IOrganizerService>(() => new OrganizerService(repositoryManager, loggerManager, mapper));
+            _assignmentService = new Lazy<IAssignmentService>(() => new AssignmentService(repository, logger, mapper));
+            _eventsService = new Lazy<IEventsService>(() => new EventsService(repository, logger, mapper));
+            _notificationService = new Lazy<INotificationService>(() => new NotificationService(repository, logger, mapper));
+            _organizerService = new Lazy<IOrganizerService>(() => new OrganizerService(repository, logger, mapper));
+            _participantService = new Lazy<IParticipantService>(() => new ParticipantService(repository, logger, mapper));
         }
 
-        public IAssignmentService AssignmentService => throw new NotImplementedException();
+        public IAssignmentService AssignmentService => _assignmentService.Value;
 
-        public IEventsService EventsService => throw new NotImplementedException();
+        public IEventsService EventsService => _eventsService.Value;
 
-        public IParticipantService ParticipantService => throw new NotImplementedException();
+        public IParticipantService ParticipantService => _participantService.Value;
 
         public INotificationService NotificationService => _notificationService.Value;
 
