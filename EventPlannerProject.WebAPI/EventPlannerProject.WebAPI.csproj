@@ -21,6 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\EventPlannerProject.Application\EventPlannerProject.Application.csproj" />
     <ProjectReference Include="..\EventPlannerProject.Persistence\EventPlannerProject.Persistence.csproj" />
+    <ProjectReference Include="..\EventPlannerProject.ServiceContract\EventPlannerProject.ServiceContract.csproj" />
+    <ProjectReference Include="..\EventPlannerProject.ServiceRepository\EventPlannerProject.ServiceRepository.csproj" />
+    <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
   </ItemGroup>
 
 </Project>

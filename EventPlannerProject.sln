@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPlannerProject.ServiceContract", "EventPlannerProject.ServiceContract\EventPlannerProject.ServiceContract.csproj", "{DFEA04C5-A0E2-42E5-BBA8-28F4E210F695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPlannerProject.ServiceRepository", "EventPlannerProject.ServiceRepository\EventPlannerProject.ServiceRepository.csproj", "{6598C55D-F6A0-4C7C-864F-13875AD83E8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventPlannerProject.ServiceRepository", "EventPlannerProject.ServiceRepository\EventPlannerProject.ServiceRepository.csproj", "{6598C55D-F6A0-4C7C-864F-13875AD83E8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
