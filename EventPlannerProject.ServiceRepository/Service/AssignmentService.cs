@@ -25,14 +25,14 @@ namespace EventPlannerProject.ServiceRepository.Service
             _mapper = mapper;
         }
 
-        public async Task<AssignmentForDisplayDto> CreateAssignementAsync(AssignmentForCreationDto assignmentForCreationDto)
+        public async Task<AssignmentForDisplayDto> CreateAssignementAsync(AssignmentForCreationDto assignmentForCreationDto) 
         {
-            var assignmentEntity = _mapper.Map<Assignment>(assignmentForCreationDto);
-            _repository.AssignmentRepository.CreateAssignment(assignmentEntity);
-            await _repository.SaveAsync();
+            var assignmentEntity = _mapper.Map<Assignment>(assignmentForCreationDto);  //Declares a variable a variable it wants to create, and passes it to the Assignment model
+            _repository.AssignmentRepository.CreateAssignment(assignmentEntity); //passing the Dto to the model.That is injecting into the model
+            await _repository.SaveAsync(); //This saves the injected object
 
-            var assignmentToReturn = _mapper.Map<AssignmentForDisplayDto>(assignmentEntity);
-            return assignmentToReturn;
+            var assignmentToReturn = _mapper.Map<AssignmentForDisplayDto>(assignmentEntity); //This declares a variable to return the created object
+            return assignmentToReturn; //This returns the inserted object.
         }
 
         public async Task DeleteAssignmentAsync(int Id, bool trackChanges)
