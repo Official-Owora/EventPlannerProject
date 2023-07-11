@@ -61,7 +61,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             var Notification = await _repositoryManager.NotificationRepository.FindNotificationById(recipientId, trackChanges);
             if (Notification != null)
             {
-                //throw an exception
+                //throw new NotFoundException();
             }
             var NotificationToReturn = _mapper.Map<NotificationForDisplayDto>(Notification); 
             return NotificationToReturn;
