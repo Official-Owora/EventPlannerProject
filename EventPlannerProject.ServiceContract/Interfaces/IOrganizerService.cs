@@ -16,7 +16,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
         Task<OrganizerForDisplayDto> FindOrganizerByIdAsync(int id, bool trackchanges);
         Task<OrganizerForDisplayDto> CreateOrganizerAsync(OrganizerForCreationDto organizerDto);
         Task UpdateOrganizerAsync(int id, bool trackChanges);
-        Task DeleteOrganizerAsync(int id, OrganizerForUpdateDto organizerDto, bool trackChanges);
+        Task DeleteOrganizerAsync(int id, bool trackChanges);
 
     }
 }

@@ -37,7 +37,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             return OrganizedReturn;
         }
 
-        public async Task DeleteOrganizerAsync(int id, OrganizerForUpdateDto organizerDto, bool trackChanges)
+        public async Task DeleteOrganizerAsync(int id, bool trackChanges)
         {
             var OrganizerToDelete = await _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
             if (OrganizerToDelete != null)
