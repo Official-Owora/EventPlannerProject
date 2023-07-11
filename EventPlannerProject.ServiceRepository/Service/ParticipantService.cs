@@ -50,6 +50,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<IEnumerable<ParticipantForDisplayDto>> FindAllParticipantsAsync(bool trackChanges)
         {
             var GetParticipantEntities = await _repository.ParticipantRepository.FindAllParticipantsAsync(trackChanges);
+            if (GetParticipantEntities != null)
+            {
+                //throw new NotFoundException();
+            }
             var participantEntities = _mapper.Map<IEnumerable<ParticipantForDisplayDto>>(GetParticipantEntities);
             return participantEntities;
         }
@@ -57,6 +61,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<ParticipantForDisplayDto> FindParticipantsByIdAsync(int Id, bool trackChanges)
         {
             var GetParticipant = await _repository.ParticipantRepository.FindParticipantsByIdAsync(Id, trackChanges);
+            if (GetParticipant != null)
+            {
+               //throw new NotFoundException();
+            }
             var ParticipantEntity = _mapper.Map<ParticipantForDisplayDto>(GetParticipant);
             return ParticipantEntity;
         }
