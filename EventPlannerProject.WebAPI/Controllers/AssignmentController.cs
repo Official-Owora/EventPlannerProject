@@ -41,7 +41,7 @@ namespace EventPlannerProject.WebAPI.Controllers
         [HttpPut]
         public void UpdateAssignment(int Id, AssignmentForUpdateDto assignemntForUpdateDto)
         {
-            _serviceManger.AssignmentService.UpdateAssignmentAsync(Id,assignemntForUpdateDto, trackChanges: false);
+            _serviceManger.AssignmentService.UpdateAssignmentAsync(Id, assignemntForUpdateDto, trackChanges: false);
         }
     }
 }
