@@ -5,6 +5,7 @@ using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
+using EventPlannerProject.WebAPI.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             var Notification = await _repositoryManager.NotificationRepository.FindNotificationById(recipientId, trackChanges);
             if (Notification != null)
             {
-                //throw new NotFoundException();
+                throw new NotFoundException($"recipient with the id: {recipientId} not found");
             }
             var NotificationToReturn = _mapper.Map<NotificationForDisplayDto>(Notification); 
             return NotificationToReturn;
