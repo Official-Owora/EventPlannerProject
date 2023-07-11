@@ -3,6 +3,7 @@ using EventPlannerProject.Application.Common;
 using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
 using System;
@@ -40,10 +41,11 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task DeleteEventsAsync(int Id, bool trackChanges)
         {
             var GetEvents = await _repository.EventsRepository.FindEventsByIdAsync(Id, trackChanges);
-            if (GetEvents != null)
+            if (GetEvents == null)
             {
-                _repository.EventsRepository.DeleteEvents(GetEvents);
+                throw new NotFoundException($"Events with id: {Id} not found");
             }
+            _repository.EventsRepository.DeleteEvents(GetEvents);
             await _repository.SaveAsync();
         }
 
@@ -57,6 +59,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<EventsForDisplayDto> FindEventsByIdAsync(int Id, bool trackChanges)
         {
             var GetEventss = await _repository.EventsRepository.FindEventsByIdAsync(Id, trackChanges);
+            if(GetEventss == null)
+            {
+                throw new NotFoundException($"Events with id: {Id} not found");
+            }
             var EventsEntity = _mapper.Map<EventsForDisplayDto>(GetEventss);
             return EventsEntity;
         }
@@ -64,6 +70,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task UpdateEventsAsync(int Id, EventsForUpdateDto eventsForUpdateDto, bool trackChanges)
         {
             var GetEventsDetail = await _repository.EventsRepository.FindEventsByIdAsync(Id, trackChanges);
+            if(GetEventsDetail == null)
+            {
+                throw new NotFoundException($"Events with id: {Id} not found");
+            }
             _mapper.Map(eventsForUpdateDto, GetEventsDetail);
             await _repository.SaveAsync();
         }

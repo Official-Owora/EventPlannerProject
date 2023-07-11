@@ -3,6 +3,7 @@ using EventPlannerProject.Application.Common;
 using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
 using System;
@@ -38,10 +39,11 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task DeleteAssignmentAsync(int Id, bool trackChanges)
         {
             var FindAssignment = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
-            if (FindAssignment != null)
+            if (FindAssignment == null)
             {
-                _repository.AssignmentRepository.DeleteAssignment(FindAssignment);
+                throw new NotFoundException($"Assignment with id: {Id} not found");
             }
+            _repository.AssignmentRepository.DeleteAssignment(FindAssignment);
             await _repository.SaveAsync();
         }
 
@@ -55,6 +57,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<AssignmentForDisplayDto> FindAssignmentByIdAsync(int Id, bool trackChanges)
         {
             var GetAssignment = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
+            if (GetAssignment == null)
+            {
+                throw new NotFoundException($"Assignment with id: {Id} not found");
+            }
             var AssignmentEntity = _mapper.Map<AssignmentForDisplayDto>(GetAssignment);
             return AssignmentEntity;
         }
@@ -62,6 +68,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task UpdateAssignmentAsync(int Id, AssignmentForUpdateDto assignmentForUpdateDto, bool trackChanges)
         {
             var GetAssignmentDetail = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
+            if (GetAssignmentDetail == null)
+            {
+                throw new NotFoundException($"Assignment with id: {Id} not found");
+            }
             _mapper.Map(assignmentForUpdateDto, GetAssignmentDetail);
             await _repository.SaveAsync();
         }

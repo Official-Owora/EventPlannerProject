@@ -3,6 +3,7 @@ using EventPlannerProject.Application.Common;
 using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
 using System;
@@ -39,10 +40,11 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task DeleteParticipantAsync(int Id, bool trackChanges)
         {
             var FindParticipant = await _repository.ParticipantRepository.FindParticipantsByIdAsync(Id, trackChanges);
-            if (FindParticipant != null)
+            if (FindParticipant == null)
             {
-                _repository.ParticipantRepository.DeleteParticipant(FindParticipant);
+                throw new NotFoundException($"Participant with id: {Id} not found");
             }
+            _repository.ParticipantRepository.DeleteParticipant(FindParticipant);
             await _repository.SaveAsync();
 
         }
@@ -50,10 +52,6 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<IEnumerable<ParticipantForDisplayDto>> FindAllParticipantsAsync(bool trackChanges)
         {
             var GetParticipantEntities = await _repository.ParticipantRepository.FindAllParticipantsAsync(trackChanges);
-            if (GetParticipantEntities != null)
-            {
-                //throw new NotFoundException();
-            }
             var participantEntities = _mapper.Map<IEnumerable<ParticipantForDisplayDto>>(GetParticipantEntities);
             return participantEntities;
         }
@@ -61,9 +59,9 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<ParticipantForDisplayDto> FindParticipantsByIdAsync(int Id, bool trackChanges)
         {
             var GetParticipant = await _repository.ParticipantRepository.FindParticipantsByIdAsync(Id, trackChanges);
-            if (GetParticipant != null)
+            if (GetParticipant == null)
             {
-               //throw new NotFoundException();
+                throw new NotFoundException($"Participant with the Id: {Id} not found");
             }
             var ParticipantEntity = _mapper.Map<ParticipantForDisplayDto>(GetParticipant);
             return ParticipantEntity;
@@ -72,6 +70,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task UpdateParticipantAsync(int Id, ParticipantForUpdateDto participantForUpdateDto, bool trackChanges)
         {
             var GetParticipantDetail = await _repository.ParticipantRepository.FindParticipantsByIdAsync(Id, trackChanges);
+            if (GetParticipantDetail == null)
+            {
+                throw new NotFoundException($"Participant with Id: {Id} not found");
+            }
             _mapper.Map(participantForUpdateDto, GetParticipantDetail);
             await _repository.SaveAsync();
         }
