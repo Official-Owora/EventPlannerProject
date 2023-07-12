@@ -67,14 +67,14 @@ namespace EventPlannerProject.ServiceRepository.Service
             return ParticipantEntity;
         }
 
-        public async Task UpdateParticipantAsync(int Id, ParticipantForUpdateDto participantForUpdateDto, bool trackChanges)
+        public async Task UpdateParticipantAsync(int Id,  bool trackChanges)
         {
             var GetParticipantDetail = await _repository.ParticipantRepository.FindParticipantsByIdAsync(Id, trackChanges);
             if (GetParticipantDetail == null)
             {
                 throw new NotFoundException($"Participant with Id: {Id} not found");
             }
-            _mapper.Map(participantForUpdateDto, GetParticipantDetail);
+            _mapper.Map<Participant>( GetParticipantDetail);
             await _repository.SaveAsync();
         }
     }

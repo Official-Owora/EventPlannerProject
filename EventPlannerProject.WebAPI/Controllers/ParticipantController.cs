@@ -40,9 +40,9 @@ namespace EventPlannerProject.WebAPI.Controllers
             _serviceManager.ParticipantService.DeleteParticipantAsync(Id, trackChanges: false);
         }
         [HttpPut]
-        public void UpdateParticipant(int Id, ParticipantForUpdateDto participantForUpdateDto)
+        public void UpdateParticipant(int Id)
         {
-            _serviceManager.ParticipantService.UpdateParticipantAsync(Id, participantForUpdateDto, trackChanges: false);
+            _serviceManager.ParticipantService.UpdateParticipantAsync(Id,  trackChanges: false);
         }
     }
 }

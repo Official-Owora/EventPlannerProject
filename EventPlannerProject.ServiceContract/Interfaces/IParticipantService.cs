@@ -14,7 +14,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
         Task<IEnumerable<ParticipantForDisplayDto>> FindAllParticipantsAsync(bool trackChanges);
         Task<ParticipantForDisplayDto> FindParticipantsByIdAsync(int Id, bool trackChanges);
         Task<ParticipantForDisplayDto> CreateParticipantAsync(ParticipantForCreationDto participantForCreationDto);
-        Task UpdateParticipantAsync(int Id,ParticipantForUpdateDto participantForUpdateDto, bool trackChanges);
+        Task UpdateParticipantAsync(int Id, bool trackChanges);
         Task DeleteParticipantAsync(int Id, bool trackChanges);
     }
 }

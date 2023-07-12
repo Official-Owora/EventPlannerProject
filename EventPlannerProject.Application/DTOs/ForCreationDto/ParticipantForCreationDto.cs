@@ -9,6 +9,10 @@ namespace EventPlannerProject.Application.DTOs.ForCreationDto
 {
     public class ParticipantForCreationDto
     {
+        [Required(ErrorMessage = "Recipient ID is required")]
+        [MaxLength(5, ErrorMessage = "Maximum number for id is five digits")]
+        public int OrganizerId { get; set; }
+        
         [Required(ErrorMessage = "Participant first name is required")]
         [MaxLength(30, ErrorMessage = "Maximum length for first name is 30 characters")]
         public string? ParticipantFirstName { get; set; }
