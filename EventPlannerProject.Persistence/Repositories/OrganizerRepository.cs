@@ -34,9 +34,9 @@ namespace EventPlannerProject.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Organizer> FindOrganizerById(int id, bool trackChanges)
+        public async Task<Organizer> FindOrganizerById(int Id, bool trackChanges)
         {
-            var organizer = await FindByConditionAsync(x=> x.Id == id, trackChanges)
+            var organizer = await FindByConditionAsync(x=> x.Id == Id, trackChanges)
                 .ToListAsync();
 
             return organizer.FirstOrDefault();

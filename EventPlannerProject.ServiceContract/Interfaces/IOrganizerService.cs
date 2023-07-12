@@ -13,7 +13,7 @@ namespace EventPlannerProject.ServiceContract.Interfaces
     public interface IOrganizerService
     {
         Task<IEnumerable<OrganizerForDisplayDto>> FindAllOrganizerAsync(bool trackChanges);
-        Task<OrganizerForDisplayDto> FindOrganizerByIdAsync(int id, bool trackchanges);
+        Task<OrganizerForDisplayDto> FindOrganizerByIdAsync(int Id, bool trackchanges);
         Task<OrganizerForDisplayDto> CreateOrganizerAsync(OrganizerForCreationDto organizerDto);
         Task UpdateOrganizerAsync(int id, bool trackChanges);
         Task DeleteOrganizerAsync(int id, bool trackChanges);
