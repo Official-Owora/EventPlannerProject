@@ -19,12 +19,12 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void CreateAssignment(Assignment assignment)
         {
-            CreateAssignment(assignment);
+            Create(assignment);
         }
 
         public void DeleteAssignment(Assignment assignment)
         {
-            DeleteAssignment(assignment);
+            Delete(assignment);
         }
 
         public async Task<IEnumerable<Assignment>> FindAllAssignmentsAsync(bool trackChanges)
@@ -34,15 +34,16 @@ namespace EventPlannerProject.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Assignment?> FindAssignmentByIdAsync(int Id, bool trackChanges)
+        public async Task<Assignment> FindAssignmentByIdAsync(int Id, bool trackChanges)
         {
-            var assignment = await FindByConditionAsync(x => x.Id == Id, trackChanges).ToListAsync();
+            var assignment = await FindByConditionAsync(x => x.Id == Id, trackChanges)
+                .ToListAsync();
             return assignment.FirstOrDefault();
         }
 
         public void UpdateAssignment(Assignment assignment)
         {
-            UpdateAssignment(assignment);
+            Update(assignment);
         }
     }
 }

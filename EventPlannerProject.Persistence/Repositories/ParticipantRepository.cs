@@ -1,4 +1,5 @@
 ﻿using EventPlannerProject.Application.Contracts;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,12 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void CreateParticipant(Participant participant)
         {
-            CreateParticipant(participant);
+            Create(participant);
         }
 
         public void DeleteParticipant(Participant participant)
         {
-            DeleteParticipant(participant);
+            Delete(participant);
         }
 
         public async Task<IEnumerable<Participant>> FindAllParticipantsAsync(bool trackChanges)
@@ -42,7 +43,7 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void UpdateParticipant(Participant participant)
         {
-           UpdateParticipant(participant);
+           Update(participant);
         }
     }
 }

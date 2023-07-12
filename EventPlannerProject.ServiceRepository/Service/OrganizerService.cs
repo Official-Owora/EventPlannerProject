@@ -3,10 +3,12 @@ using EventPlannerProject.Application.Common;
 using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,13 +39,15 @@ namespace EventPlannerProject.ServiceRepository.Service
             return OrganizedReturn;
         }
 
-        public async Task DeleteOrganizerAsync(int id, OrganizerForUpdateDto organizerDto, bool trackChanges)
+        public async Task DeleteOrganizerAsync(int id, bool trackChanges)
         {
+
             var OrganizerToDelete = await _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
-            if (OrganizerToDelete != null)
+            if (OrganizerToDelete == null)
             {
-                _repositoryManager.OrganizerRepository.DeleteOrganizer(OrganizerToDelete);
+                throw new NotFoundException($"Organizer with id: {id} not found");
             }
+            _repositoryManager.OrganizerRepository.DeleteOrganizer(OrganizerToDelete);
             await _repositoryManager.SaveAsync();
         }
 
@@ -59,7 +63,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             var Organizer = await _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
             if(Organizer == null)
             {
-                //throw an exception
+                throw new NotFoundException($"Organizer with id: {id} not found");
             }
 
             var OrganizerToReturn = _mapper.Map<OrganizerForDisplayDto>(Organizer);
@@ -71,7 +75,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             var OrganizerToUpdate = await _repositoryManager.OrganizerRepository.FindOrganizerById(id, trackChanges);
             if (OrganizerToUpdate == null)
             {
-                //throw an exception
+                throw new NotFoundException($"Organizer with id: {id} not found");
             }
              _mapper.Map<Organizer>(OrganizerToUpdate);
             await _repositoryManager.SaveAsync();

@@ -10,38 +10,39 @@ namespace EventPlannerProject.WebAPI.Controllers
     [ApiController]
     public class ParticipantController : ControllerBase
     {
-        private readonly IServiceManager _serviceManger;
+        private readonly IServiceManager _serviceManager;
 
         public ParticipantController(IServiceManager service)
         {
-            _serviceManger = service;
+            _serviceManager = service;
         }
         [HttpPost]
-        public void CreateParticipant(ParticipantForCreationDto participantForCreationDto)
+        public async Task<IActionResult> CreateParticipant(ParticipantForCreationDto participantForCreationDto)
         {
-            _serviceManger.ParticipantService.CreateParticipantAsync(participantForCreationDto, trackChanges: false);
+            var createParticipant = await _serviceManager.ParticipantService.CreateParticipantAsync(participantForCreationDto);
+            return Ok(createParticipant);
         }
         [HttpGet]
         public async Task<IActionResult>FindAllParticipant()
         {
-            var participants = await _serviceManger.ParticipantService.FindAllParticipantsAsync(trackChanges: false);
+            var participants = await _serviceManager.ParticipantService.FindAllParticipantsAsync(trackChanges: false);
             return Ok(participants);
         }
         [HttpGet("{Id}")]
         public async Task<IActionResult>FindParticipantById(int Id) 
         {
-            var participants = await _serviceManger.ParticipantService.FindParticipantsByIdAsync(Id, trackChanges: false);
+            var participants = await _serviceManager.ParticipantService.FindParticipantsByIdAsync(Id, trackChanges: false);
             return Ok(participants);
         }
         [HttpDelete]
         public void DeleteParticipant(int Id)
         {
-            _serviceManger.ParticipantService.DeleteParticipantAsync(Id, trackChanges: false);
+            _serviceManager.ParticipantService.DeleteParticipantAsync(Id, trackChanges: false);
         }
         [HttpPut]
         public void UpdateParticipant(int Id, ParticipantForUpdateDto participantForUpdateDto)
         {
-            _serviceManger.ParticipantService.UpdateParticipantAsync(Id, participantForUpdateDto, trackChanges: false);
+            _serviceManager.ParticipantService.UpdateParticipantAsync(Id, participantForUpdateDto, trackChanges: false);
         }
     }
 }

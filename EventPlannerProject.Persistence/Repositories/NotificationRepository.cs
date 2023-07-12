@@ -19,12 +19,12 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void CreateNotification(Notification notification)
         {
-            CreateNotification(notification);
+            Create(notification);
         }
 
         public void DeleteNotification(Notification notification)
         {
-            DeleteNotification(notification);
+            Delete(notification);
         }
 
         public async Task<IEnumerable<Notification>> FindAllNotificationsAsync(bool trackChanges)

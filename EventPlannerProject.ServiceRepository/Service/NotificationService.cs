@@ -3,6 +3,7 @@ using EventPlannerProject.Application.Common;
 using EventPlannerProject.Application.DTOs.ForCreationDto;
 using EventPlannerProject.Application.DTOs.ForDisplayDto;
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
+using EventPlannerProject.Application.Exceptions;
 using EventPlannerProject.Domain.Models;
 using EventPlannerProject.ServiceContract.Interfaces;
 using System;
@@ -42,10 +43,11 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task DeleteNotificationAsync(int id, bool trackChanges)
         {
             var NotificationToDelete = await _repositoryManager.NotificationRepository.FindNotificationById(id, trackChanges);
-            if (NotificationToDelete != null)
+            if (NotificationToDelete == null)
             {
-                _repositoryManager.NotificationRepository.DeleteNotification(NotificationToDelete);
+                throw new NotFoundException($"Notification with id: {id} not found");
             }
+            _repositoryManager.NotificationRepository.DeleteNotification(NotificationToDelete);
             await _repositoryManager.SaveAsync();
         }
 
@@ -59,9 +61,9 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<NotificationForDisplayDto> FindNotificationByRecipientId(int recipientId, bool trackChanges)
         {
             var Notification = await _repositoryManager.NotificationRepository.FindNotificationById(recipientId, trackChanges);
-            if (Notification != null)
+            if (Notification == null)
             {
-                //throw new NotFoundException();
+                throw new NotFoundException($"recipient with the id: {recipientId} not found");
             }
             var NotificationToReturn = _mapper.Map<NotificationForDisplayDto>(Notification); 
             return NotificationToReturn;
@@ -71,6 +73,10 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task UpdateNotificationAsync(int id, bool trackChanges)
         {
             var Notification = await _repositoryManager.NotificationRepository.FindNotificationById(id, trackChanges);
+            if (Notification == null)
+            {
+                throw new NotFoundException($"notification with id: {id} not found");
+            }
             _mapper.Map<Notification>(Notification);
             await _repositoryManager.SaveAsync();
         }

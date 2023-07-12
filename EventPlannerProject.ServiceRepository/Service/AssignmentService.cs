@@ -16,12 +16,12 @@ namespace EventPlannerProject.ServiceRepository.Service
 {
     internal sealed class AssignmentService : IAssignmentService
     {
-        private readonly IRepositoryManager _repository;
+        private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public AssignmentService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        public AssignmentService(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
         {
-            _repository = repository;
+            _repositoryManager = repositoryManager;
             _logger = logger;
             _mapper = mapper;
         }
@@ -29,8 +29,8 @@ namespace EventPlannerProject.ServiceRepository.Service
         public async Task<AssignmentForDisplayDto> CreateAssignementAsync(AssignmentForCreationDto assignmentForCreationDto) 
         {
             var assignmentEntity = _mapper.Map<Assignment>(assignmentForCreationDto);  //Declares a variable a variable it wants to create, and passes it to the Assignment model
-            _repository.AssignmentRepository.CreateAssignment(assignmentEntity); //passing the Dto to the model.That is injecting into the model
-            await _repository.SaveAsync(); //This saves the injected object
+            _repositoryManager.AssignmentRepository.CreateAssignment(assignmentEntity); //passing the Dto to the model.That is injecting into the model
+            await _repositoryManager.SaveAsync(); //This saves the injected object
 
             var assignmentToReturn = _mapper.Map<AssignmentForDisplayDto>(assignmentEntity); //This declares a variable to return the created object
             return assignmentToReturn; //This returns the inserted object.
@@ -38,42 +38,43 @@ namespace EventPlannerProject.ServiceRepository.Service
 
         public async Task DeleteAssignmentAsync(int Id, bool trackChanges)
         {
-            var FindAssignment = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
+            var FindAssignment = await _repositoryManager.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
             if (FindAssignment == null)
             {
                 throw new NotFoundException($"Assignment with id: {Id} not found");
             }
-            _repository.AssignmentRepository.DeleteAssignment(FindAssignment);
-            await _repository.SaveAsync();
+            _repositoryManager.AssignmentRepository.DeleteAssignment(FindAssignment);
+            await _repositoryManager.SaveAsync();
         }
 
         public async Task<IEnumerable<AssignmentForDisplayDto>> FindAllAssignmentsAsync(bool trackChanges)
         {
-            var GetAssignmentEntities = await _repository.AssignmentRepository.FindAllAssignmentsAsync(trackChanges);
+            var GetAssignmentEntities = await _repositoryManager.AssignmentRepository.FindAllAssignmentsAsync(trackChanges);
             var assignmentEntities = _mapper.Map<IEnumerable<AssignmentForDisplayDto>>(GetAssignmentEntities);
             return assignmentEntities;
         }
 
-        public async Task<AssignmentForDisplayDto> FindAssignmentByIdAsync(int Id, bool trackChanges)
+        public async Task<AssignmentForDisplayDto> FindAssignmentByIdAsync(int id, bool trackChanges)
         {
-            var GetAssignment = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
+            var GetAssignment = await _repositoryManager.AssignmentRepository.FindAssignmentByIdAsync(id, trackChanges);
             if (GetAssignment == null)
             {
-                throw new NotFoundException($"Assignment with id: {Id} not found");
+                throw new NotFoundException($"Assignment with id: {id} not found");
             }
+
             var AssignmentEntity = _mapper.Map<AssignmentForDisplayDto>(GetAssignment);
             return AssignmentEntity;
         }
 
-        public async Task UpdateAssignmentAsync(int Id, AssignmentForUpdateDto assignmentForUpdateDto, bool trackChanges)
+        public async Task UpdateAssignmentAsync(int Id,  bool trackChanges)
         {
-            var GetAssignmentDetail = await _repository.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
+            var GetAssignmentDetail = await _repositoryManager.AssignmentRepository.FindAssignmentByIdAsync(Id, trackChanges);
             if (GetAssignmentDetail == null)
             {
                 throw new NotFoundException($"Assignment with id: {Id} not found");
             }
-            _mapper.Map(assignmentForUpdateDto, GetAssignmentDetail);
-            await _repository.SaveAsync();
+            _mapper.Map<Assignment>(GetAssignmentDetail);
+            await _repositoryManager.SaveAsync();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void CreateEvents(Events events)
         {
-            CreateEvents(events);
+            Create(events);
         }
 
         public void DeleteEvents(Events events)
@@ -33,7 +33,7 @@ namespace EventPlannerProject.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Events?> FindEventsByIdAsync(int Id, bool trackChanges)
+        public async Task<Events> FindEventsByIdAsync(int Id, bool trackChanges)
         {
             var events = await FindByConditionAsync(x => x.Id == Id, trackChanges).ToListAsync();
             return events.FirstOrDefault();
@@ -41,7 +41,7 @@ namespace EventPlannerProject.Persistence.Repositories
 
         public void UpdateEvents(Events events)
         {
-            UpdateEvents(events);
+            Update(events);
         }
     }
 }

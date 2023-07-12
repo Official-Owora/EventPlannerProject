@@ -1,7 +1,10 @@
 using EventPlannerProject.Application.Common;
 using EventPlannerProject.WebAPI.Extensions;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 // Add services to the container.
 builder.Services.ConfigureCors();
@@ -10,9 +13,8 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSQLContext(builder.Configuration);
+
 builder.Services.AddAutoMapper(typeof(Program));
-
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,7 +39,6 @@ else if(app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles(); //Handles HTML files
-
 app.UseForwardedHeaders( new ForwardedHeadersOptions
 {
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All

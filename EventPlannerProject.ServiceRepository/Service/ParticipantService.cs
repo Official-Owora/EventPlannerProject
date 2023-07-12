@@ -27,7 +27,7 @@ namespace EventPlannerProject.ServiceRepository.Service
             _mapper = mapper;
         }
 
-        public async Task<ParticipantForDisplayDto> CreateParticipantAsync(ParticipantForCreationDto participantForCreationDto, bool trackChanges)
+        public async Task<ParticipantForDisplayDto> CreateParticipantAsync(ParticipantForCreationDto participantForCreationDto)
         {
             var participantEntity = _mapper.Map<Participant>(participantForCreationDto);
             _repository.ParticipantRepository.CreateParticipant(participantEntity);

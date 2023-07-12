@@ -2,6 +2,7 @@
 using EventPlannerProject.Application.DTOs.ForUpdateDto;
 using EventPlannerProject.ServiceContract.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventPlannerProject.WebAPI.Controllers
@@ -10,38 +11,39 @@ namespace EventPlannerProject.WebAPI.Controllers
     [ApiController]
     public class AssignmentController : ControllerBase
     {
-        private readonly IServiceManager _serviceManger;
+        private readonly IServiceManager _serviceManager;
 
         public AssignmentController(IServiceManager service)
         {
-            _serviceManger = service;
+            _serviceManager = service;
         }
         [HttpPost]
-        public void CreateAssignment(AssignmentForCreationDto assignmentForCreationDto)
+        public async Task<IActionResult> CreateAssignment(AssignmentForCreationDto assignmentForCreationDto)
         {
-            _serviceManger.AssignmentService.CreateAssignementAsync(assignmentForCreationDto);
+            var createAssignment = await _serviceManager.AssignmentService.CreateAssignementAsync(assignmentForCreationDto);
+            return Ok(createAssignment);
         }
         [HttpGet]
         public async Task<IActionResult> FindAllAssignment()
         {
-            var assignments = await _serviceManger.AssignmentService.FindAllAssignmentsAsync(trackChanges: false);
+            var assignments = await _serviceManager.AssignmentService.FindAllAssignmentsAsync(trackChanges: false);
             return Ok(assignments);
         }
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> FindAssignmentById(int Id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> FindAssignmentById(int id)
         {
-            var assignments = await _serviceManger.AssignmentService.FindAssignmentByIdAsync(Id, trackChanges: false);
+            var assignments = await _serviceManager.AssignmentService.FindAssignmentByIdAsync(id, trackChanges: false);
             return Ok(assignments);
         }
         [HttpDelete]
         public void DeleteAssingment(int Id)
         {
-            _serviceManger.AssignmentService.DeleteAssignmentAsync(Id, trackChanges: false);
+            _serviceManager.AssignmentService.DeleteAssignmentAsync(Id, trackChanges: false);
         }
         [HttpPut]
-        public void UpdateAssignment(int Id, AssignmentForUpdateDto assignemntForUpdateDto)
+        public void UpdateAssignment(int Id)
         {
-            _serviceManger.AssignmentService.UpdateAssignmentAsync(Id, assignemntForUpdateDto, trackChanges: false);
+            _serviceManager.AssignmentService.UpdateAssignmentAsync(Id,  trackChanges: false);
         }
     }
 }
