@@ -30,14 +30,5 @@ namespace EventPlannerProject.Application.DTOs.ForCreationDto
         [Required(ErrorMessage = "The state event will happen is required"), DataType(DataType.Text)]
         [MaxLength(20, ErrorMessage = "Maximum length for the state is 20 characters")]
         public string? EventLocationByState { get; set; }
-
-        //Has One to Many mapping with Assignment table
-        public ICollection<Assignment>? Assignment { get; set; }
-
-        //Has One to Many mapping with Participant table
-        public ICollection<Participant>? Participant { get; set; }
-
-        //Has One to Many mapping with Notification
-        public ICollection<Notification>? Notification { get; set; }
     }
 }

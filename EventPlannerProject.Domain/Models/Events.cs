@@ -36,9 +36,6 @@ namespace EventPlannerProject.Domain.Models
         //Has One to Many mapping with Assignment table
         List<IEnumerable<Assignment>>? Assignment { get; set; }
 
-        //Has One to Many mapping with Participant table
-        List<IEnumerable<Participant>>? Participant { get; set; }
-
         //Has One to Many mapping with Notification
         List<IEnumerable<Notification>>? Notification { get; set; }
 

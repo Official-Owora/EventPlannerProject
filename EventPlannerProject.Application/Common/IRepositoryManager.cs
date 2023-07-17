@@ -12,7 +12,6 @@ namespace EventPlannerProject.Application.Common
         public INotificationRepository NotificationRepository { get; }
         public IOrganizerRepository OrganizerRepository { get; }
         public IEventsRepository EventsRepository { get; }
-        public IParticipantRepository ParticipantRepository { get; }
         public IAssignmentRepository AssignmentRepository { get; }
         Task SaveAsync();
     }

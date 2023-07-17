@@ -31,8 +31,5 @@ namespace EventPlannerProject.Domain.Models
         
         [Required(ErrorMessage = "Role is compulsory")]
         public string? Role { get; set; }
-
-        //Navigational properties
-        public ICollection<Participant>? Participant { get; set; }
     }
 }

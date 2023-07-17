@@ -15,7 +15,6 @@ namespace EventPlannerProject.ServiceRepository.Service
         private readonly Lazy<IEventsService> _eventsService;
         private readonly Lazy<INotificationService> _notificationService;
         private readonly Lazy<IOrganizerService> _organizerService;
-        private readonly Lazy<IParticipantService> _participantService;
 
         public ServiceManager(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
@@ -23,14 +22,11 @@ namespace EventPlannerProject.ServiceRepository.Service
             _eventsService = new Lazy<IEventsService>(() => new EventsService(repository, logger, mapper));
             _notificationService = new Lazy<INotificationService>(() => new NotificationService(repository, logger, mapper));
             _organizerService = new Lazy<IOrganizerService>(() => new OrganizerService(repository, logger, mapper));
-            _participantService = new Lazy<IParticipantService>(() => new ParticipantService(repository, logger, mapper));
         }
 
         public IAssignmentService AssignmentService => _assignmentService.Value;
 
         public IEventsService EventsService => _eventsService.Value;
-
-        public IParticipantService ParticipantService => _participantService.Value;
 
         public INotificationService NotificationService => _notificationService.Value;
 

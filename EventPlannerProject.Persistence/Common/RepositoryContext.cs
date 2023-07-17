@@ -14,14 +14,6 @@ namespace EventPlannerProject.Persistence.Common
         public RepositoryContext(DbContextOptions options) : base(options) 
         { 
         }
-        //this code overrides two the primary-foreign key tables
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Participant>()
-                .HasKey(x => new { x.EventId, x.OrganizerId });
-            base.OnModelCreating(modelBuilder);
-        }
-        public DbSet<Participant> Participants { get; set; }
         public DbSet<Organizer> Organizers { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
